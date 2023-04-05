@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/opensans-font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/line-awesome/css/line-awesome.min.css' %}">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<body class="form-v7" style="display: flex; justify-content: center; align-items: center;">
+<div class="page-content" style="background-image: url('{% static 'images/login-bg.jpg' %}'); background-size: 100%; height: 100vh">
+    <div class="form-v7-content">
+        <!-- <div class="form-left">
+            <img src="images/form-v7.jpg" alt="form">
+            <p class="text-1">Sign Up</p>
+            <p class="text-2">Privacy policy & Term of service</p>
+        </div> -->
+        <form class="form-detail" action="login" method="post" id="myform">
+            {% csrf_token %}
+            <h2 class="form-title" style="color: #e14163;">Sign in here</h2>
+            <div class="form-row">
+                <input type="text" name="username" id="username" class="input-text" placeholder="USERNAME"
+                       required>
+            </div>
+            <div class="form-row">
+                <!-- <label for="password">PASSWORD</label> -->
+                <input type="password" name="password" id="password" class="input-text"
+                       placeholder="PASSWORD" required>
+                <!--                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>-->
+            </div>
+            <div class="form-row">
+                {% for msg in messages %}
+                <h4 style="color: red; text-transform: uppercase;">{{ msg }}</h4>
+                {% endfor %}
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="login" value="LOGIN" style="bg-color: #e14163;">
+                <p>OR<a href="register"  style="color: #e14163;">SIGN UP</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>-->
+<!--<script>-->
+<!--		// just for the demos, avoids form submit-->
+<!--		jQuery.validator.setDefaults({-->
+<!--		  	debug: true,-->
+<!--		  	success:  function(label){-->
+<!--        		label.attr('id', 'valid');-->
+<!--   		 	},-->
+<!--		});-->
+<!--		$( "#myform" ).validate({-->
+<!--		  	rules: {-->
+<!--			    your_email: {-->
+<!--			      	required: true,-->
+<!--			      	email: true-->
+<!--			    },-->
+<!--			    password: "required",-->
+<!--		    	comfirm_password: {-->
+<!--		      		equalTo: "#password"-->
+<!--		    	}-->
+<!--		  	},-->
+<!--		  	messages: {-->
+<!--		  		username: {-->
+<!--		  			required: "Please enter a username"-->
+<!--		  		},-->
+<!--		  		your_email: {-->
+<!--		  			required: "Please provide an email"-->
+<!--		  		},-->
+<!--		  		password: {-->
+<!--	  				required: "Please provide a password"-->
+<!--		  		},-->
+<!--		  		comfirm_password: {-->
+<!--		  			required: "Please provide a password",-->
+<!--		      		equalTo: "Wrong Password"-->
+<!--		    	}-->
+<!--		  	}-->
+<!--		});-->
+
+<!--</script>-->
+<!-- JS -->
+<!--<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>-->
+<!--<script src="{% static 'js/main.js' %}"></script>-->
+</body>
+</html>

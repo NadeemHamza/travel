@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Register</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font-->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/opensans-font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fonts/line-awesome/css/line-awesome.min.css' %}">
+    <!-- Jquery -->
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <!-- Main Style Css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body class="form-v7" style="display: flex; justify-content: center; align-items: center;">
+<div class="page-content" style="background-image: url('{% static 'images/signup-bg.jpg' %}'); background-size: 100%; height: 100vh">
+    <div class="form-v7-content">
+        <!-- <div class="form-left">
+            <img src="images/form-v7.jpg" alt="form">
+            <p class="text-1">Sign Up</p>
+            <p class="text-2">Privacy policy & Term of service</p>
+        </div> -->
+        <form class="form-detail" action="register" method="post" id="myform">
+            {% csrf_token %}
+            <h2 class="form-title">Create your account</h2>
+            <div class="form-row">
+                <input type="text" name="username" id="username" class="input-text" placeholder="ENTER YOUR USERNAME"
+                       required>
+            </div>
+            <div class="form-row">
+                <input type="text" name="first_name" id="firstname" class="input-text"
+                       placeholder="ENTER YOUR FIRST NAME" required>
+            </div>
+            <div class="form-row">
+                <input type="text" name="last_name" id="lastname" class="input-text" placeholder="ENTER YOUR LAST NAME">
+            </div>
+            <div class="form-row">
+                <!-- <label for="your_email">E-MAIL</label> -->
+                <input type="text" name="email" id="your_email" class="input-text"
+                       pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="ENTER YOUR EMAIL ID" required>
+            </div>
+            <div class="form-row">
+                <!-- <label for="password">PASSWORD</label> -->
+                <input type="password" name="password" id="password" class="input-text"
+                       placeholder="ENTER YOUR PASSWORD" required>
+                <!--                <span toggle="#password" class="zmdi zmdi-eye field-icon toggle-password"></span>-->
+            </div>
+            <div class="form-row">
+                <!-- <label for="comfirm_password">CONFIRM PASSWORD</label> -->
+                <input type="password" name="password1" id="comfirm_password" class="input-text"
+                       placeholder="CONFIRM PASSWORD" required>
+            </div>
+            <div class="form-row">
+                {% for msg in messages %}
+                <h4 style="color: red; text-transform: uppercase;">{{ msg }}</h4>
+                {% endfor %}
+            </div>
+            <div class="form-row-last">
+                <input type="submit" name="register" class="register" value="REGISTER">
+                <p>OR<a href="login">SIGN IN</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+<!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>-->
+<!--<script>-->
+<!--		// just for the demos, avoids form submit-->
+<!--		jQuery.validator.setDefaults({-->
+<!--		  	debug: true,-->
+<!--		  	success:  function(label){-->
+<!--        		label.attr('id', 'valid');-->
+<!--   		 	},-->
+<!--		});-->
+<!--		$( "#myform" ).validate({-->
+<!--		  	rules: {-->
+<!--			    your_email: {-->
+<!--			      	required: true,-->
+<!--			      	email: true-->
+<!--			    },-->
+<!--			    password: "required",-->
+<!--		    	comfirm_password: {-->
+<!--		      		equalTo: "#password"-->
+<!--		    	}-->
+<!--		  	},-->
+<!--		  	messages: {-->
+<!--		  		username: {-->
+<!--		  			required: "Please enter a username"-->
+<!--		  		},-->
+<!--		  		your_email: {-->
+<!--		  			required: "Please provide an email"-->
+<!--		  		},-->
+<!--		  		password: {-->
+<!--	  				required: "Please provide a password"-->
+<!--		  		},-->
+<!--		  		comfirm_password: {-->
+<!--		  			required: "Please provide a password",-->
+<!--		      		equalTo: "Wrong Password"-->
+<!--		    	}-->
+<!--		  	}-->
+<!--		});-->
+
+<!--</script>-->
+<!-- JS -->
+<!--<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>-->
+<!--<script src="{% static 'js/main.js' %}"></script>-->
+</body>
+</html>
